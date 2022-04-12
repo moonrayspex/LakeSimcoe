@@ -5,7 +5,7 @@
       name="viewport"
       content="initial-scale=1,maximum-scale=1,user-scalable=no"
     />
-    <title>TimeSlider widget | Sample | ArcGIS API for JavaScript 4.23</title>
+    <title>Lake Simcoe Water Water Quality</title>
     <link
       rel="stylesheet"
       href="https://js.arcgis.com/4.23/esri/themes/light/main.css"
@@ -45,7 +45,10 @@
         "esri/widgets/Legend"
       ], (Map, MapView, FeatureLayer, TimeSlider, Expand, Legend) => {
         const layer = new FeatureLayer({
-          url: "https://services1.arcgis.com/pMeXRvgWClLJZr3s/arcgis/rest/services/WaterQuality_LakeSimcoe/FeatureServer/0"
+          url: "https://services1.arcgis.com/pMeXRvgWClLJZr3s/arcgis/rest/services/WaterQuality_LakeSimcoe/FeatureServer/0",
+          outFields: ["STN","FIXDATE", "TEMPERATURE ? C", "DISSOLVED OXYGEN (mg/L)"],
+          popupTemplate: popupStations
+        
         });
 
         const map = new Map({
@@ -91,6 +94,18 @@
           expanded: false
         });
         view.ui.add(legendExpand, "top-left");
+      
+        const popupStations = {
+        "title": "Monitoring Station",
+        "content": "<b>Station Code:</b> {STN}<br><b>Date:</b> {FIXDATE}"
+      }
+      
+      
+      
+      
+      
+      
+      
       });
     </script>
   </head>
