@@ -48,17 +48,6 @@
         
         esriConfig.apiKey = "AAPKb7fd7d5cf12f4a65ad63cdef1255e5be28Ax_PpxkDP8EeBPex0s4fPuRbtY7eys0GQ7y-H7iSTiPID4ZerBaJSUiaqT82PV";
         
-        const popupStations = {
-        "title": "Monitoring Station",
-        "content": "<b>Station Code:</b> {STN}<br><b>Date:</b> {FIXDATE}"
-      };
-        const layer = new FeatureLayer({
-          url: "https://services1.arcgis.com/pMeXRvgWClLJZr3s/arcgis/rest/services/WaterQuality_LakeSimcoe/FeatureServer/0",
-          outFields: ["STN","FIXDATE", "TEMPERATURE ? C", "DISSOLVED OXYGEN (mg/L)"],
-          popupTemplate: popupStations
-        
-        });
-
         const map = new Map({
           basemap: "hybrid",
           layers: [layer]
@@ -69,6 +58,17 @@
           container: "viewDiv",
           zoom: 11,
           center: [-79.3755, 44.4103]
+        });
+
+        const popupStations = {
+        "title": "Monitoring Station",
+        "content": "<b>Station Code:</b> {STN}<br><b>Date:</b> {FIXDATE}"
+      };
+        const layer = new FeatureLayer({
+          url: "https://services1.arcgis.com/pMeXRvgWClLJZr3s/arcgis/rest/services/WaterQuality_LakeSimcoe/FeatureServer/0",
+          outFields: ["STN","FIXDATE", "TEMPERATURE ? C", "DISSOLVED OXYGEN (mg/L)"],
+          popupTemplate: popupStations
+        
         });
         
         // time slider widget initialization
@@ -104,7 +104,7 @@
         view.ui.add(legendExpand, "top-left");
       
 
-      map.add(layer);
+      //map.add(layer);
       
       });
     </script>
