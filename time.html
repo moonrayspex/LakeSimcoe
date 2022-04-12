@@ -43,7 +43,9 @@
         "esri/widgets/TimeSlider",
         "esri/widgets/Expand",
         "esri/widgets/Legend"
-      ], (Map, MapView, FeatureLayer, TimeSlider, Expand, Legend) => {
+      ], 
+      function(esriConfig, Map, MapView, FeatureLayer, TimeSlider, Expand, Legend) {
+        
         esriConfig.apiKey = "AAPKb7fd7d5cf12f4a65ad63cdef1255e5be28Ax_PpxkDP8EeBPex0s4fPuRbtY7eys0GQ7y-H7iSTiPID4ZerBaJSUiaqT82PV";
 
         const layer = new FeatureLayer({
