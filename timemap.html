@@ -58,9 +58,16 @@
         
         });
 
+        const layer2 = new FeatureLayer({
+          url: "https://services1.arcgis.com/pMeXRvgWClLJZr3s/ArcGIS/rest/services/DissolvedOxygen/FeatureServer/0",
+          outFields: ["STN","FIXDATE", "Temp", "DO"],
+          popupTemplate: popupStations
+        
+        });
+
         const map = new Map({
           basemap: "hybrid",
-          layers: [layer]
+          layers: [layer, layer2]
         });
 
         const view = new MapView({
@@ -92,6 +99,16 @@
           };
         });
 
+        view.whenLayerView(layer2).then((lv) => {
+          // around up the full time extent to full hour
+          timeSlider.fullTimeExtent =
+            layer2.timeInfo.fullTimeExtent.expandTo("hours");
+          timeSlider.stops = {
+            interval: layer2.timeInfo.interval
+          };
+        });
+
+
         const legend = new Legend({
           view: view
         });
@@ -117,4 +134,3 @@
     </div>
   </body>
 </html>
-
