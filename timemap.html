@@ -39,11 +39,12 @@
       require([
         "esri/Map",
         "esri/views/MapView",
+        "esri/widgets/Print",
         "esri/layers/FeatureLayer",
         "esri/widgets/TimeSlider",
         "esri/widgets/Expand",
         "esri/widgets/Legend"
-      ], ( Map, MapView, FeatureLayer, TimeSlider, Expand, Legend) =>{
+      ], ( Map, MapView, Print, FeatureLayer, TimeSlider, Expand, Legend) =>{
         
         //esriConfig.apiKey = "AAPKb7fd7d5cf12f4a65ad63cdef1255e5be28Ax_PpxkDP8EeBPex0s4fPuRbtY7eys0GQ7y-H7iSTiPID4ZerBaJSUiaqT82PV";
         const popupStations = {
@@ -77,6 +78,18 @@
           center: [-79.3755, 44.4103]
         });
 
+        //add in Print service
+        view.when(() => {
+          const print = new Print({
+            view: view,
+            // specify your own print service
+            printServiceUrl:
+              "https://utility.arcgisonline.com/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task"
+          });
+
+          // Add widget to the bottom right corner of the view
+          view.ui.add(print, "bottom-right");
+        });
 
         
         // time slider widget initialization
