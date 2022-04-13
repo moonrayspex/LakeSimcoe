@@ -48,12 +48,12 @@
         //esriConfig.apiKey = "AAPKb7fd7d5cf12f4a65ad63cdef1255e5be28Ax_PpxkDP8EeBPex0s4fPuRbtY7eys0GQ7y-H7iSTiPID4ZerBaJSUiaqT82PV";
         const popupStations = {
         "title": "Monitoring Station",
-        "content": "<b>Station Code:</b> {STN}<br><b>Date:</b> {FIXDATE}<br><b>Temperature:</b> {TEMPERATURE ? C}"
+        "content": "<b>Station Code:</b> {STN}<br><b>Date:</b> {FIXDATE}<br><b>Temperature:</b> {Temp}"
       };
 
         const layer = new FeatureLayer({
-          url: "https://services1.arcgis.com/pMeXRvgWClLJZr3s/arcgis/rest/services/WaterQuality_LakeSimcoe/FeatureServer/0",
-          outFields: ["STN","FIXDATE", "TEMPERATURE ? C", "DISSOLVED OXYGEN (mg/L)"],
+          url: "https://services1.arcgis.com/pMeXRvgWClLJZr3s/arcgis/rest/services/WaterMonitoringStations2019/FeatureServer"Expand,
+          outFields: ["STN","FIXDATE", "Temp", "DO"],
           popupTemplate: popupStations
         
         });
