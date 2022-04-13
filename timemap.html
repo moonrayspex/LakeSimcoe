@@ -87,11 +87,18 @@
               "https://utility.arcgisonline.com/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task"
           });
 
-          // Add widget to the bottom right corner of the view
-          view.ui.add(print, "bottom-right");
+        const PrintExpand = new Expand({
+          expandIconClass: "esri-icon-printer",
+          expandTooltip: "Print Map",
+          view: view,
+          content: printServiceUrl,
+          expanded: false    
+        });
+        // Add widget to the middle right corner of the view
+        view.ui.add(PrintExpand, "bottom-left");
         });
 
-        
+
         // time slider widget initialization
         const timeSlider = new TimeSlider({
           container: "timeSlider",
